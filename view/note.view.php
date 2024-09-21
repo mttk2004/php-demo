@@ -15,7 +15,7 @@
       <div class="flex flex-col">
         <div class="flex-1 flex items-center justify-between border-b border-gray-200 py-3 sm:px-6">
           <div class="flex-1 min-w-0">
-              <p class="text-lg font-medium leading-6"><?= $note['title'] ?></p>
+              <p class="text-lg font-medium leading-6"><?= htmlspecialchars($note['title']) ?></p>
           </div>
         </div>
       </div>

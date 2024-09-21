@@ -5,8 +5,8 @@ $routes = [
   '/about' => 'about',
   '/contact' => 'contact',
   '/notes' => 'notes',
+  '/notes/create' => 'note-create',
   '/note' => 'note',
-  '/note-create' => 'note-create',
 ];
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
