@@ -5,6 +5,8 @@ $routes = [
   '/about' => 'about',
   '/contact' => 'contact',
   '/notes' => 'notes',
+  '/note' => 'note',
+  '/note-create' => 'note-create',
 ];
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
@@ -15,9 +17,14 @@ function routeToController($uri, $routes) {
     $view = $routes[$uri];
     require_once(__DIR__ . '/controller/' . $view . '.php');
   } else {
-    require_once(__DIR__ . '/view/404.view.php');
-    die();
+    abort(ResponseCode::NOT_FOUND);
   }
+}
+
+function abort($code = 404) {
+  http_response_code($code);
+  require_once(__DIR__ . '/view/' . $code . '.view.php');
+  die();
 }
 
 routeToController($uri, $routes);

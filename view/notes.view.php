@@ -6,15 +6,26 @@
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <!-- Your content -->
 
-    <?php foreach ($notes as $note): ?>
+    <?php foreach ($notes as $note): 
+        $id = $note['id'];
+        $title = $note['title'];
+      ?>
       <div class="flex flex-col">
-        <div class="flex-1 flex items-center justify-between border-b border-gray-200 py-6 sm:px-6">
+        <div class="flex-1 flex items-center justify-between border-b border-gray-200 py-3 sm:px-6">
           <div class="flex-1 min-w-0">
-            <h3 class="text-lg font-medium leading-6 text-gray-900"><?php echo $note['title']; ?></h3>
+            <a href="/note?id=<?= $id ?>" class="text-blue-500 hover:text-blue-600 hover:underline">
+              <p class="text-lg font-medium leading-6"><?= $title ?></p>
+            </a>
           </div>
         </div>
       </div>
     <?php endforeach; ?>
+
+    <div class="flex flex-col mt-8">
+      <a href="/note-create" class="text-blue-500 hover:text-blue-600 hover:underline">
+        <p class="text-lg font-medium leading-6">Create New Note</p>
+      </a>
+    </div>
   </div>
 </main>
 
