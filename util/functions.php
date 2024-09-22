@@ -1,5 +1,7 @@
 <?php
 
+use Core\ResponseCode;
+
 function dd($var) {
   echo '<pre>';
   var_dump($var);
@@ -16,4 +18,10 @@ function authorize($condition, $statusCode = ResponseCode::FORBIDDEN) {
   if (!$condition) {
     abort($statusCode);
   }
+}
+
+function view($view, $data) {
+  extract($data);
+
+  require_once(BASE_PATH . './view/' . $view . '.view.php');
 }

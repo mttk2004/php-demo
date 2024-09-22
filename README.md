@@ -14,4 +14,10 @@
 
 #### 7. Done!
 
-Mai Tran Tuan Kiet
+---
+
+### CREDITS
+
+- [Mai Tran Tuan Kiet] [**@mttk2004**](https://github.com/mttk2004)
+
+---

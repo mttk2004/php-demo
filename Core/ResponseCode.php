@@ -1,5 +1,6 @@
 <?php
 
+namespace Core;
 
 class ResponseCode {
   const OK = 200;

@@ -1,6 +1,6 @@
-<?php require_once('partials/head.php'); ?>
-<?php require_once('partials/nav.php'); ?>
-<?php require_once('partials/banner.php'); ?>
+<?php require_once(__DIR__ . '/../partials/head.php'); ?>
+<?php require_once(__DIR__ . '/../partials/nav.php'); ?>
+<?php require_once(__DIR__ . '/../partials/banner.php'); ?>
 
 <main>
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -22,11 +22,11 @@
     <?php endforeach; ?>
 
     <div class="flex flex-col mt-8">
-      <a href="/notes/create" class="text-blue-500 hover:text-blue-600 hover:underline">
-        <p class="text-lg font-medium leading-6">Create New Note</p>
+      <a href="/notes/create" class="text-white">
+        <span class="inline-flex gap-2 text-lg font-medium leading-6 bg-green-600 py-3 px-6 rounded"><span>Create new note</span><span>&rarr;</span></span>   
       </a>
     </div>
   </div>
 </main>
 
-<?php require_once('partials/foot.php'); ?>
+<?php require_once(__DIR__ . '/../partials/foot.php'); ?>

@@ -1,7 +1,9 @@
 <?php
 
+use Core\Database;
+
 $heading = 'Single Note';
-$config = require_once(__DIR__ . '/../config.php');
+$config = require_once(__DIR__ . '/../../Core/config.php');
 $db = new Database($config);
 
 
@@ -18,4 +20,7 @@ $note = $db->query('SELECT * FROM note where id = :id', ['id' => $_GET['id']])->
 authorize($note['user'] === 3); // hardcoded for now
 
 // view
-require_once(__DIR__ . '/../view/note.view.php');
+view('notes/show', [
+  'heading' => 'Single Note',
+  'note' => $note
+]);

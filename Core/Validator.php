@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class Validator {
   public static function isValidString($value, $minLength = 0, $maxLength = INF) {
     $str = trim($value);
