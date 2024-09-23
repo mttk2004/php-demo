@@ -12,6 +12,16 @@
         </a>
       </div>
 
+      <!-- delete note -->
+      <form method="POST">
+	      <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="id" value="<?= $note['id'] ?>">
+        <input type="hidden" value="<?= $note["id"] ?>" name="delete">
+        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+          Delete
+        </button>
+      </form>
+
       <div class="flex flex-col">
         <div class="flex-1 flex items-center justify-between border-b border-gray-200 py-3 sm:px-6">
           <div class="flex-1 min-w-0">

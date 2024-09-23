@@ -6,21 +6,19 @@ $heading = 'Single Note';
 $config = require_once(__DIR__ . '/../../Core/config.php');
 $db = new Database($config);
 
+// Get note id
+$noteId = $_GET['id'] ?? null;
 
-// if id not exist
-if (!isset($_GET['id'])) {
-  abort(404);
-}
+// Check if id exists
+if (!$noteId) abort(404);
 
-$note = $db->query('SELECT * FROM note where id = :id', ['id' => $_GET['id']])->findOrFail();
+$note = $db->query('SELECT * FROM note WHERE id = :id', ['id' => $noteId])->findOrFail();
 
-// dd($note);
+// Authorize access to the note
+authorize($note['user'] === 3); // Hardcoded for now
 
-// if found but not the user
-authorize($note['user'] === 3); // hardcoded for now
-
-// view
+// View
 view('notes/show', [
-  'heading' => 'Single Note',
-  'note' => $note
+	'heading' => 'Single Note',
+	'note' => $note
 ]);

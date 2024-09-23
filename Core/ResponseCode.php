@@ -3,15 +3,15 @@
 namespace Core;
 
 class ResponseCode {
-  const OK = 200;
-  const CREATED = 201;
-  const ACCEPTED = 202;
-  const NO_CONTENT = 204;
-  const BAD_REQUEST = 400;
-  const UNAUTHORIZED = 401;
-  const FORBIDDEN = 403;
-  const NOT_FOUND = 404;
-  const METHOD_NOT_ALLOWED = 405;
-  const CONFLICT = 409;
-  const INTERNAL_SERVER_ERROR = 500;
+  const int OK = 200;
+  const int CREATED = 201;
+  const int ACCEPTED = 202;
+  const int NO_CONTENT = 204;
+  const int BAD_REQUEST = 400;
+  const int UNAUTHORIZED = 401;
+  const int FORBIDDEN = 403;
+  const int NOT_FOUND = 404;
+  const int METHOD_NOT_ALLOWED = 405;
+  const int CONFLICT = 409;
+  const int INTERNAL_SERVER_ERROR = 500;
 }
