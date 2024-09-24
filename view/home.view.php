@@ -5,6 +5,12 @@
 <main>
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <!-- Your content -->
+	  <!-- if session has a user, show the welcome message -->
+	  <?php if (isset($_SESSION['user'])): ?>
+	    <h1>Welcome, <?= $_SESSION['user']['email'] ?></h1>
+	  <?php else: ?>
+	    <h1>Welcome, Guest</h1>
+	  <?php endif; ?>
   </div>
 </main>
 

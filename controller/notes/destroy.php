@@ -1,10 +1,10 @@
 <?php
 
+use Core\App;
 use Core\Database;
 
-$heading = 'Single Note';
-$config = require_once(__DIR__ . '/../../Core/config.php');
-$db = new Database($config);
+// Get database
+$db = App::resolve(Database::class);
 
 // Get note id
 $noteId = $_POST['id'];

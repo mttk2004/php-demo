@@ -5,7 +5,7 @@
 <main>
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <!-- Your content -->
-      <form action="/notes/store" method="POST">
+      <form action="/notes/create" method="POST">
         <div class="shadow sm:rounded-md sm:overflow-hidden">
           <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
             <div class="grid grid-cols-6 gap-6">

@@ -1,5 +1,6 @@
 <?php
 
+use Core\App;
 use Core\Validator;
 use Core\Database;
 
@@ -11,24 +12,17 @@ if (!Validator::isValidString($title, 3, 255)) {
 }
 
 if (!empty($errors)) {
-//	dd($errors);
-	// View
 	view('notes/create', [
 			'heading' => 'Create Note ...',
 			'errors' => $errors,
 			'title' => $title,
 	]);
 	
-	dd('hello');
-	// Redirect to create note with errors
-//	header('Location: /notes/create');
 	return null;
 }
 
-
-// Database
-$config = require_once(__DIR__ . '/../../Core/config.php');
-$db = new Database($config);
+// Get database
+$db = App::resolve(Database::class);
 
 // Insert note
 $db->query('INSERT INTO note (title, user) VALUES (:title, :user)', [

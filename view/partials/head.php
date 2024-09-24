@@ -10,7 +10,7 @@
 	<meta name="robots" content="index, follow">
 	<title>Tiêu đề trang web của bạn</title>
 
-	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.tailwindcss.com?plugin=forms"></script>
 </head>
 <body class="h-full">
 	<div class="min-h-full">
