@@ -1,5 +1,8 @@
 <?php
 
+use Core\Session;
+
+
 // Start session
 session_start();
 
@@ -11,7 +14,15 @@ require_once BASE_PATH . './util/functions.php';
 
 // Autoload classes
 spl_autoload_register(function ($class) {
-  require_once BASE_PATH . "./{$class}.php";
+	// Only autoload classes in the Core namespace
+	if (str_starts_with($class, 'Core\\')) {
+  	require_once BASE_PATH . "./{$class}.php";
+	}
+	
+	// Only autoload classes in the Forms namespace
+	if (str_starts_with($class, 'Forms\\')) {
+		require_once BASE_PATH . "./Http/{$class}.php";
+	}
 });
 
 // Start session
@@ -26,3 +37,8 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 // Route the request
 $router->route($uri, $method);
+
+// End flash session
+Session::unFlash();
+
+

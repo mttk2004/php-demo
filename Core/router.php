@@ -2,46 +2,71 @@
 
 namespace Core;
 
+
+use Core\Middleware\Middleware;
+use Exception;
+
 class Router
 {
 	public array $routes = [];
 	
-	private function add($method, $uri, $controller): void
+	private function add($method, $uri, $controller): Router
 	{
-		$this->routes[] = compact('method', 'uri', 'controller');
+		$this->routes[] = [
+				'method' => $method,
+				'uri' => $uri,
+				'controller' => $controller,
+				'middleware' => null,
+		];
+		
+		return $this;
 	}
 	
-	public function get($uri, $controller): void
+	public function get($uri, $controller): Router
 	{
-		$this->add('GET', $uri, $controller);
+		return $this->add('GET', $uri, $controller);
 	}
 	
-	public function post($uri, $controller): void
+	public function post($uri, $controller): Router
 	{
-		$this->add('POST', $uri, $controller);
+		return $this->add('POST', $uri, $controller);
 	}
 	
-	public function delete($uri, $controller): void
+	public function delete($uri, $controller): Router
 	{
-		$this->add('DELETE', $uri, $controller);
+		return $this->add('DELETE', $uri, $controller);
 	}
 	
-	public function patch($uri, $controller): void
+	public function patch($uri, $controller): Router
 	{
-		$this->add('PATCH', $uri, $controller);
+		return $this->add('PATCH', $uri, $controller);
 	}
 	
-	public function put($uri, $controller): void
+	public function put($uri, $controller): Router
 	{
-		$this->add('PUT', $uri, $controller);
+		return $this->add('PUT', $uri, $controller);
 	}
 	
+	public function only($key): Router
+	{
+		$this->routes[array_key_last($this->routes)]['middleware'] = $key;
+		
+		return $this;
+	}
+	
+	/**
+	 * @throws Exception
+	 */
 	public function route($uri, $method): void
 	{
 		// Find the route
 		foreach ($this->routes as $route) {
 			if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
-				require_once BASE_PATH . "controller/{$route['controller']}.php";
+				// Check if the route has middleware
+				Middleware::resolve($route['middleware']);
+				
+				// Call the controller
+				require_once BASE_PATH . "Http/controller/{$route['controller']}.php";
 				exit;
 			}
 		}

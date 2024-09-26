@@ -1,3 +1,9 @@
+<?php
+
+use Core\Session;
+
+
+?>
 <nav class="bg-gray-800">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
@@ -49,7 +55,7 @@
 					<!-- Profile dropdown -->
 					<div class="relative ml-3">
 						<div>
-							<?php if (!isset($_SESSION['user'])): ?>
+							<?php if (!Session::has('user')): ?>
 								<!-- a button to login -->
 								<a
 										href="/register"
@@ -58,6 +64,14 @@
 										focus:ring-offset-gray-800 text-white px-4 py-2"
 										id="user-menu-button" aria-expanded="false" aria-haspopup="true">
 									Register
+								</a>
+								<a
+										href="/login"
+										class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm
+										focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2
+										focus:ring-offset-gray-800 text-white px-4 py-2"
+										id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+									Login
 								</a>
 							<?php else: ?>
 								<button
@@ -95,9 +109,12 @@
 							<a
 									href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
 									tabindex="-1" id="user-menu-item-1">Settings</a>
-							<a
-									href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-									tabindex="-1" id="user-menu-item-2">Sign out</a>
+							<form action="/login" method="POST" >
+								<input type="hidden" name="_method" value="DELETE" />
+							<button
+									class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+									tabindex="-1" id="user-menu-item-2">Sign out</button>
+							</form>
 						</div>
 					</div>
 				</div>

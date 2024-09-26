@@ -1,6 +1,8 @@
 <?php
 
 use Core\ResponseCode;
+use Core\Session;
+
 
 function dd($var) {
   echo '<pre>';
@@ -28,7 +30,6 @@ function abort(int $statusCode = 404): void
 	require_once(BASE_PATH . './view/' . $statusCode . '.view.php');
 }
 
-
 function view($view, $data): void
 {
   extract($data);
@@ -39,4 +40,15 @@ function view($view, $data): void
 	}
 	
   require(BASE_PATH . './view/' . $view . '.view.php');
+}
+
+function redirect($url): void
+{
+	header('Location: ' . $url);
+	die();
+}
+
+function old($key, $default = '')
+{
+	return Session::getFlash('old')[$key] ?? $default;
 }
